@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirim Pesan Cinta</title>
+    <link rel="stylesheet" href="pesan.css">
+</head>
+<body>
+
+    <!-- Efek animasi romantis -->
+    <div class="love-rain"></div>
+
+    <div class="container">
+        <h1>🌹 Kirim Pesan Romantis 🌹</h1>
+        <p>Ungkapkan perasaanmu dengan sepenuh hati 💖</p>
+
+        <form id="loveMessageForm">
+            <textarea id="message" placeholder="Tulis pesan cintamu di sini..." required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+
+        <p class="success-message hidden" id="successMessage">Pesanmu telah dikirim dengan sukses! 💌</p>
+    </div>
+
+    <script>
+        document.getElementById("loveMessageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let message = document.getElementById("message").value;
+            
+            if (message.trim() === "") {
+                alert("Pesan tidak boleh kosong!");
+                return;
+            }
+
+            // Kirim pesan ke email pribadi
+            let emailReceiver = "ridomaulana193@gmail.com"; // Ganti dengan email pribadimu
+            let subject = "Pesan Cinta dari Web";
+            let mailtoLink = `mailto:${emailReceiver}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            
+            window.location.href = mailtoLink;
+
+            // Tampilkan pesan sukses
+            document.getElementById("successMessage").classList.remove("hidden");
+            document.getElementById("message").value = "";
+        });
+
+        // Efek hujan hati
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "falling-heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.querySelector(".love-rain").appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>

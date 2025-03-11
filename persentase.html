@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persentase Cinta</title>
+    <style>
+        body {
+            background-color: #ffccdc;
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: #d63384;
+            font-size: 28px;
+        }
+        label {
+            font-size: 20px;
+            color: #8b0055;
+            display: block;
+            margin-top: 20px;
+        }
+        input {
+            font-size: 20px;
+            padding: 10px;
+            width: 80px;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid #d63384;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #d63384;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #b81c6c;
+        }
+        .stars {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            box-shadow: 0 0 10px white;
+            animation: twinkle 1s infinite alternate;
+        }
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Seberapa Besar Rasa Sayangmu?</h1>
+    <label for="lovePercent">Persentase Cinta:</label>
+    <input type="number" id="lovePercent" min="1" max="1000" required>
+    <button onclick="goToSurat()">Oke</button>
+
+    <script>
+        function goToSurat() {
+            let percent = document.getElementById("lovePercent").value;
+            if (percent === "" || percent < 1 || percent > 1000) {
+                alert("Masukkan angka antara 1 hingga 1000!");
+                return;
+            }
+            localStorage.setItem("persentaseCinta", percent); // Simpan data ke Local Storage
+            window.location.href = "surat.html"; // Pindah ke halaman surat
+        }
+
+        function createStars() {
+            for (let i = 0; i < 100; i++) {
+                let star = document.createElement("div");
+                star.className = "stars";
+                star.style.left = Math.random() * window.innerWidth + "px";
+                star.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>

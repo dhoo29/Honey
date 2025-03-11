@@ -1,0 +1,144 @@
+body {
+    background: radial-gradient(circle, #ffb3c1, #ff4d6d);
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Efek hujan hati */
+.love-rain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 5s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+    to { transform: translateY(100vh) rotate(360deg); opacity: 1; }
+}
+
+/* Amplop */
+.envelope {
+    position: relative;
+    width: 220px;
+    height: 160px;
+    background: #ff4d6d;
+    margin: 100px auto;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.envelope .flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 90px solid #ff2d55;
+    top: -45px;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.envelope.opened .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope .body {
+    position: absolute;
+    width: 220px;
+    height: 160px;
+    background: #ff4d6d;
+    top: 0;
+}
+
+.click-text {
+    margin-top: -20px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    animation: fadeIn 1.5s infinite alternate;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Opsi Pilihan */
+.options {
+    margin-top: 20px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease-in-out;
+}
+
+.options button {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.options button:hover {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+}
+
+/* Pesan yang muncul */
+.message-box {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 450px;
+    margin: 20px auto;
+    font-size: 18px;
+    animation: fadeIn 1s ease-in-out;
+    white-space: pre-line;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.5s ease-in-out;
+}
+
+.message-box.show {
+    transform: scale(1);
+}
+
+/* Tombol Lanjut ke Pesan */
+.next-button {
+    background: #ff416c;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: 0.3s;
+}
+
+.next-button:hover {
+    background: #ff4b2b;
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}

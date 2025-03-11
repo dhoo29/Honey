@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta</title>
+    <link rel="stylesheet" href="surat.css">
+</head>
+<body>
+<script>
+    window.onload = function() {
+        let percent = localStorage.getItem("persentaseCinta"); // Ambil nilai dari Local Storage
+        if (percent) {
+            document.getElementById("hasilPersentase").innerText = percent + "%"; // Tampilkan persentase
+        } else {
+            document.getElementById("hasilPersentase").innerText = "0%"; // Default jika tidak ada data
+        }
+    }
+</script>
+<h2>Cinta Kamu Sebesar: <span id="hasilPersentase"></span></h2>
+    <!-- Efek hujan hati -->
+    <div class="love-rain"></div>
+
+    <div class="container">
+        <!-- Amplop -->
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="body"></div>
+            <p class="click-text">Klik amplop</p>
+        </div>
+
+        <!-- Opsi pilihan kata -->
+        <div class="options hidden" id="options">
+            <button onclick="showMessage('bucin')">Kata-kata Bucin</button>
+            <button onclick="showMessage('cool')">Kata-kata Cool</button>
+            <button onclick="showMessage('romantis')">Kata-kata Romantis</button>
+        </div>
+
+        <!-- Pesan yang muncul -->
+        <div class="message-box hidden" id="message-box">
+            <p id="message"></p>
+            <button class="next-button hidden" id="next-button" onclick="goToNextPage()">Lanjut ke Pesan</button>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            let envelope = document.querySelector('.envelope');
+            envelope.classList.add('opened');
+            
+            // Tampilkan pilihan kata setelah amplop terbuka
+            setTimeout(() => {
+                document.getElementById('options').classList.remove('hidden');
+            }, 1000);
+        }
+
+        function showMessage(type) {
+            const messages = {
+                bucin: "Cinta itu seperti kopi. Kadang manis, kadang pahit, tapi tetap bikin ketagihan! ❤️\n\n" +
+                       "Aku tidak tahu bagaimana hidupku sebelum bertemu denganmu. Sekarang, setiap pagi terasa lebih cerah, dan setiap malam lebih indah.\n\n" +
+                       "Aku ingin selalu ada di sisimu, mencintaimu dengan sepenuh hati. Jangan pernah ragu, jangan pernah takut. Aku akan selalu ada untukmu. ❤️",
+
+                cool: "Cinta itu bukan hanya tentang memiliki, tapi juga memahami dan menghargai. 😉\n\n" +
+                      "Aku ingin bersamamu bukan karena aku butuh seseorang, tapi karena aku ingin seseorang sepertimu ada dalam hidupku. " +
+                      "Kamu adalah tempat aku berbagi cerita, tempat aku bisa menjadi diriku sendiri tanpa harus berpura-pura. 💙",
+
+                romantis: "Setiap hari bersamamu adalah puisi terindah dalam hidupku... 💖\n\n" +
+                          "Aku ingin berjalan bersamamu melewati suka dan duka, menciptakan kenangan yang tak akan pernah pudar. " +
+                          "Aku mencintaimu lebih dari yang bisa kuungkapkan dengan kata-kata, dan aku akan terus mencintaimu selamanya. ❤️"
+            };
+
+            document.getElementById("message").innerText = messages[type];
+            document.getElementById("message-box").classList.remove("hidden");
+            document.getElementById("next-button").classList.remove("hidden");
+        }
+
+        function goToNextPage() {
+            window.location.href = "pesan.html";
+        }
+
+        // Efek hujan hati
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "falling-heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.querySelector(".love-rain").appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>

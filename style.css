@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap');
+
+body {
+    background-color: #111;
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Efek hujan bintang */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: falling 3s linear infinite;
+}
+
+@keyframes falling {
+    from {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
+
+/* Kotak input dengan animasi halus */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    max-width: 400px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 24px;
+}
+
+/* Input persentase */
+input {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    text-align: center;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Tombol animasi */
+button {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 22px;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 50, 100, 0.4);
+    margin-top: 15px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    box-shadow: 0 0 20px rgba(255, 50, 100, 0.6);
+    transform: scale(1.05);
+}
+
+/* Animasi fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
